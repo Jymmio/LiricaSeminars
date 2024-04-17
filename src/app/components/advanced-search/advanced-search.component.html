@@ -1,0 +1,32 @@
+<div id="advanced-search-bar" *ngIf="isSearchbarVisible">
+  <div id="up-part" class="search-part">
+    <div class="search-element">
+      <h3>Titre</h3>
+      <input placeholder="Titre..."/>
+    </div>
+    <div class="search-element">
+      <h3>Orateur</h3>
+      <input placeholder="Orateur..."/>
+    </div>
+    <div class="search-element">
+      <h3 style="text-align: center; padding-bottom: 8px;">Langue</h3>
+      <label for="choix">Langue...
+      <select id="choix"placeholder="Auteur...">
+        <option>Français</option>
+        <option>English</option>
+      </select>
+      </label>
+    </div>
+  </div>
+  <div id="down-part" class="search-part">
+    <div class="search-element">
+      <h3>Emplacement</h3>
+      <input placeholder="Auteur..."/>
+    </div>
+    <div class="search-element">
+      <h3>Date de création</h3>
+      <input type="date">
+    </div>
+    <button>Chercher !</button>
+  </div>
+</div>

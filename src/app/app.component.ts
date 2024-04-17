@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { PageHeadComponent } from './components/page-head/page-head.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { AdvancedSearchComponent } from './advanced-search/advanced-search.component';
+import { AdvancedSearchComponent } from './components/advanced-search/advanced-search.component';
 
 @Component({
   selector: 'app-root',
@@ -14,3 +14,4 @@ import { AdvancedSearchComponent } from './advanced-search/advanced-search.compo
 export class AppComponent {
   title = 'SeminairesLirica';
 }
+
