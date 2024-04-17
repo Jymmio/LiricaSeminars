@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AdvancedSearchService } from '../../services/advanced-search.service';
+import { AdvancedSearchService } from '../../../services/advanced-search.service';
 import { NgIf, CommonModule } from '@angular/common';
 
 @Component({

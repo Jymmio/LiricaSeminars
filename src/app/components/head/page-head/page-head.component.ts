@@ -1,9 +1,9 @@
 import { Component, Output, EventEmitter } from '@angular/core';
-import { AppComponent } from '../../app.component';
+import { AppComponent } from '../../../app.component';
 import { SidebarComponent } from '../sidebar/sidebar.component';
-import { SidebarService } from '../../services/sidebar.service';
+import { SidebarService } from '../../../services/sidebar.service';
 import { AdvancedSearchComponent } from '../advanced-search/advanced-search.component';
-import { AdvancedSearchService } from '../../services/advanced-search.service';
+import { AdvancedSearchService } from '../../../services/advanced-search.service';
 
 
 @Component({

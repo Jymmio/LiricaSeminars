@@ -1,0 +1,20 @@
+.seminar-cards{
+  margin: 40px;
+}
+h1{
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 3.2em;
+  font-weight: bold;
+  padding: 30px;
+  background-color: rgb(25, 100, 200);
+  display: inline-block;
+}
+.cards{
+  margin: 30px;
+  display: flex;
+  flex-wrap: wrap;
+}
+app-card{
+  width: 33%;
+}

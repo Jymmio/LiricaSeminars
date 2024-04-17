@@ -1,0 +1,12 @@
+<div class="card-display" *ngIf="isCardVisible">
+  <div id="close-btn" (click)="toggleDisplayCard()">
+    <i class="fas fa-times"></i>
+  </div>
+  <div id="displayed">
+    <h2>{{title}}</h2>
+    <h3>{{place}}</h3>
+    <h3>{{date}}</h3>
+    <p onload="recieveData()">{{content}}</p>
+  </div>
+</div>
+<div id="overlay" *ngIf="isCardVisible"></div>
