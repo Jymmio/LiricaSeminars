@@ -2,16 +2,18 @@
   <div id="login-content">
     <h2 id="login-title">Connexion</h2>
 
-    <div class="input-login-element">
-      <h3>Adresse mail :</h3>
-      <input placeholder="E-mail..."/>
-    </div>
+    <form [formGroup]="form">
+      <div class="input-login-element">
+        <h3>Adresse mail :</h3>
+        <input placeholder="E-mail..." type="email" formControlName="email"/>
+      </div>
 
-    <div class="input-login-element">
-      <h3>Mot de passe :</h3>
-      <input placeholder="Password..."/>
-    </div>
+      <div class="input-login-element">
+        <h3>Mot de passe :</h3>
+        <input placeholder="Password..." type="password" formControlName="password"/>
+      </div>
+    </form>
 
-    <button>Se connecter !</button>
+    <button type="submit" (click)="loginAction()">Se connecter !</button>
   </div>
 </div>
