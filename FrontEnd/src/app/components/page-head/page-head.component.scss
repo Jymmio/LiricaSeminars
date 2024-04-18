@@ -15,6 +15,10 @@ h1{
   color: #EAEBED;
   font-size: 42px;
   margin-top: 20px;
+  cursor: pointer;
+}
+h1:hover{
+  color: #666f81;
 }
 #search{
   display: flex;

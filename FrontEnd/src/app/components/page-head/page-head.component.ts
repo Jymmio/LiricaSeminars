@@ -1,15 +1,15 @@
 import { Component, Output, EventEmitter } from '@angular/core';
-import { AppComponent } from '../../../app.component';
-import { SidebarComponent } from '../sidebar/sidebar.component';
-import { SidebarService } from '../../../services/sidebar.service';
-import { AdvancedSearchComponent } from '../advanced-search/advanced-search.component';
-import { AdvancedSearchService } from '../../../services/advanced-search.service';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { SidebarService } from '../../services/sidebar.service';
+import { AdvancedSearchComponent } from './advanced-search/advanced-search.component';
+import { AdvancedSearchService } from '../../services/advanced-search.service';
+import { RouterLink } from '@angular/router';
 
 
 @Component({
   selector: 'app-page-head',
   standalone: true,
-  imports: [SidebarComponent, AdvancedSearchComponent],
+  imports: [SidebarComponent, AdvancedSearchComponent, RouterLink],
   templateUrl: './page-head.component.html',
   styleUrl: './page-head.component.scss'
 })

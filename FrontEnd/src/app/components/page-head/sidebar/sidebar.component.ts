@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { SidebarService } from '../../../services/sidebar.service';
 import { NgIf, CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
   templateUrl: './sidebar.component.html',
-  imports : [NgIf,CommonModule],
+  imports : [NgIf,CommonModule, RouterLink],
   styleUrl: './sidebar.component.scss'
 })
 
