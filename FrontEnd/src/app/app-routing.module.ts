@@ -4,6 +4,7 @@ import { SeminarCardsComponent } from './components/body/seminar-cards/seminar-c
 import { LoginComponent } from './components/body/login/login.component';
 import { SignupComponent } from './components/body/signup/signup.component';
 import { NewSeminarComponent } from './components/body/new-seminar/new-seminar.component';
+import { SearchedComponent } from './components/body/searched/searched.component';
 
 export const routes: Routes = [
   {
@@ -25,6 +26,10 @@ export const routes: Routes = [
   {
     path: 'add-seminar',
     component: NewSeminarComponent
+  },
+  {
+    path: 'search',
+    component: SearchedComponent
   }
 ];
 

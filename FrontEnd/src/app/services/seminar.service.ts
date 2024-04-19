@@ -11,9 +11,11 @@ export class SeminarService {
 
   url = environment.apiUrl;
 
-  getSeminar(annee:number){
-    console.log(this.url+'/seminar/get/year-'+ annee);
+  getSeminarYear(annee:number){
     return this.httpClient.get(this.url+'/seminar/get/year-'+ annee);
+  }
+  getSeminarTitle(title: string) {
+    return this.httpClient.get(this.url + '/seminar/get/title-' + title);
   }
   addSeminar(data: any){
     return this.httpClient.post(this.url +
@@ -21,4 +23,5 @@ export class SeminarService {
       headers: new HttpHeaders().set('Content-Type', "application/json")
     })
   }
+
 }

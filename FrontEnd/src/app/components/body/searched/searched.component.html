@@ -1,0 +1,7 @@
+<div class="seminar-cards">
+  <h1>SÉMINAIRES TROUVÉS</h1>
+  <app-card-display ></app-card-display>
+  <div class="cards">
+    <app-card  *ngFor="let card of dataService.getSearchData()" [card] = "card"></app-card>
+  </div>
+</div>

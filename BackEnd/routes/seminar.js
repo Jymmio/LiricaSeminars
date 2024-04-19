@@ -15,6 +15,17 @@ router.get('/get/year-:annee', (req, res) => {
         }
     });
 });
+router.get('/get/title-:title', (req, res) => {
+    const title = req.params.title;
+    var query = "SELECT title, DATE_FORMAT(date, '%d/%m/%Y %kh%i') AS date, place, content FROM seminaires WHERE title LIKE ?";
+    connection.query(query, ['%'+title+'%'], (err, results) => {
+      if (!err) {
+        return res.status(200).json(results);
+      } else {
+        return res.status(500).json({ err });
+      }
+    });
+  });
 router.post('/add', (req, res) => {
     const seminar = req.body;
     console.log(req.body);

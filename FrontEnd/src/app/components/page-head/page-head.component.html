@@ -3,10 +3,12 @@
   <app-sidebar></app-sidebar>
   <h1 routerLink="home">SÉMINAIRES LIRICA</h1>
   <div id="search">
-    <div id="search-bar">
-      <input placeholder="Search..." />
-      <button id="search-button"><i class="fas fa-search"></i></button>
-    </div>
+    <form [formGroup]="form">
+      <div id="search-bar">
+          <input placeholder="Search title..."  formControlName="search"/>
+          <button id="search-button" (click)="submitSearch()"><i class="fas fa-search"></i></button>
+      </div>
+    </form>
     <button id="advanced-search" (click) = "searchClick()">Recherche avancée</button>
   </div>
 </div>
