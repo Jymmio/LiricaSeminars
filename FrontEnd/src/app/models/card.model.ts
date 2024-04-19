@@ -3,6 +3,7 @@ export class Card {
     public title:String,
     public place:String,
     public date:String,
-    public content:String
+    public content:String,
+    public orator: String
   ){}
 }

@@ -5,7 +5,7 @@ require('dotenv').config();
 
 router.get('/get/year-:annee', (req, res) => {
     const annee = req.params.annee;
-    var query = "SELECT title, DATE_FORMAT(date, '%d/%m/%Y %kh%i') AS date, place, content FROM seminaires WHERE YEAR(date) = " + annee;
+    var query = "SELECT title, DATE_FORMAT(date, '%d/%m/%Y %kh%i') AS date, place, content, orateur AS orator FROM seminaires WHERE YEAR(date) = " + annee + " ORDER BY MONTH(date) DESC, DAY(date) DESC, HOUR(date) DESC, MINUTE(date) DESC";
     connection.query(query, (err, results) => {
         if (!err) {
             return res.status(200).json(results);
@@ -15,6 +15,29 @@ router.get('/get/year-:annee', (req, res) => {
         }
     });
 });
+
+router.get('/get', (req, res) => {
+    const data = req.query; 
+    let query = "SELECT title, DATE_FORMAT(date, '%d/%m/%Y %kh%i') AS date, place, content, orateur AS orator FROM seminaires WHERE ";
+    const conditions = [];
+    for (const key in data) {
+      if (data.hasOwnProperty(key)) {
+        conditions.push(key + " LIKE \"%" + data[key] + "%\"");
+      }
+    }
+    query += conditions.join(" AND ");
+    console.log(query);
+  
+    connection.query(query, (err, results) => {
+      if (!err) {
+        return res.status(200).json(results);
+      } else {
+        console.log(err);
+        return res.status(500).json({ err });
+      }
+    });
+  });
+
 router.get('/get/title-:title', (req, res) => {
     const title = req.params.title;
     var query = "SELECT title, DATE_FORMAT(date, '%d/%m/%Y %kh%i') AS date, place, content FROM seminaires WHERE title LIKE ?";

@@ -14,6 +14,7 @@ export class CardDisplayComponent implements OnInit {
   place!: String;
   date!: String;
   content!: String;
+  orator!: String;
 
   receivedData: String[] = [];
   isCardVisible: boolean = false;
@@ -31,6 +32,7 @@ export class CardDisplayComponent implements OnInit {
       this.place = this.receivedData[1];
       this.date = this.receivedData[2];
       this.content = this.receivedData[3];
+      this.orator = this.receivedData[4];
     });
   }
 }

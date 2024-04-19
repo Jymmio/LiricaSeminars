@@ -14,6 +14,8 @@ import { SeminarService } from '../../../services/seminar.service';
   styleUrl: './new-seminar.component.scss'
 })
 export class NewSeminarComponent {
+  isAdded: boolean = false;
+  isAddedAnimation: boolean = false;
   verifyTitle: boolean = false;
   verifyOrator: boolean = false;
   verifyLanguage: boolean = false;
@@ -33,21 +35,15 @@ export class NewSeminarComponent {
     date: new FormControl(''),
     content: new FormControl('')
   })
-  submitNewSeminar() {
-    /*this.verifyTitle = false;
-    this.verifyContent = false;
-    this.verifyDate = false;
-    this.verifyLanguage = false;
-    this.verifyOrator = false;
-    this.verifyPlace = false;*/
-
+  async submitNewSeminar() {
     const titleControl = this.form.get('title');
     const dateControl = this.form.get('date');
     const placeControl = this.form.get('place');
     const oratorControl = this.form.get('orator');
     const languageControl = this.form.get('language');
     const contentControl = this.form.get('content');
-
+    this.isAdded = false;
+    this.isAddedAnimation = false;
     var data = {
       title: "",
       date: "",
@@ -90,8 +86,8 @@ export class NewSeminarComponent {
       this.seminarService.addSeminar(data).subscribe((res: any) => {
         this.ngx.start();
         if (res?.message === "Seminaire ajouté sans erreurs.") {
-          this.router.navigate(['/home']);
           this.ngx.stop();
+          this.switchSuccess();
         }
 
       }, (err) => {
@@ -102,7 +98,6 @@ export class NewSeminarComponent {
         else {
           console.log('une erreur est survenue.');
         }
-        this.router.navigate(["/home"]);
       });
     }
     else {
@@ -144,5 +139,17 @@ export class NewSeminarComponent {
       }
     }
     this.ngx.stop();
+  }
+  sleep(ms: number) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+  async switchSuccess(){
+    this.isAdded = true;
+    this.isAddedAnimation = true;
+    await this.sleep(2000);
+    this.isAddedAnimation = false;
+    setTimeout(() => {
+      this.isAdded = false;
+    }, 500);
   }
 }

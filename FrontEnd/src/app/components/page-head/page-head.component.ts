@@ -51,29 +51,34 @@ export class PageHeadComponent {
       const searchText = searchControl.value ?? '';
       data.search = searchText;
     }
-    this.seminaireService.getSeminarTitle(data.search).subscribe((res:any)=>{
+    if(data.search !== ""){
+      this.seminaireService.getSeminarTitle(data.search).subscribe((res:any)=>{
+        this.ngx.stop();
+        var data = {
+          title: '',
+          date: '',
+          place: '',
+          content: ''
+        }
+        var bddResponse: any[] = [];
+        for(let i = 0; i < res.length; i++){
+          data=res[i];
+          bddResponse.push(data);
+        }
+        this.dataService.setSearchData(bddResponse);
+        this.router.navigate(["/search"]);
+      }, (err) => {
+        this.ngx.stop();
+        if(err.error?.message){
+          console.log(err.error?.message);
+        }
+        else{
+          console.log('une erreur est survenue.');
+        }
+      });
+    }else{
+      this.router.navigate(["/home"]);
       this.ngx.stop();
-      var data = {
-        title: '',
-        date: '',
-        place: '',
-        content: ''
-      }
-      var bddResponse: any[] = [];
-      for(let i = 0; i < res.length; i++){
-        data=res[i];
-        bddResponse.push(data);
-      }
-      this.dataService.setSearchData(bddResponse);
-      this.router.navigate(["/search"]);
-    }, (err) => {
-      this.ngx.stop();
-      if(err.error?.message){
-        console.log(err.error?.message);
-      }
-      else{
-        console.log('une erreur est survenue.');
-      }
-    });
+    }
   }
 }

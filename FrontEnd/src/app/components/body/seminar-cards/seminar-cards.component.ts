@@ -6,27 +6,58 @@ import { Card } from '../../../models/card.model';
 import { DataService } from '../../../services/data.service';
 import { PageHeadComponent } from '../../page-head/page-head.component';
 import { SeminarService } from '../../../services/seminar.service';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 
 @Component({
   selector: 'app-seminar-cards',
   standalone: true,
-  imports: [CardComponent, CardDisplayComponent,  CommonModule, PageHeadComponent],
+  imports: [CardComponent, CardDisplayComponent,  CommonModule, PageHeadComponent, ReactiveFormsModule],
   templateUrl: './seminar-cards.component.html',
   styleUrl: './seminar-cards.component.scss'
 })
 
 export class SeminarCardsComponent implements OnInit{
   currentYear: number;
+  year: number;
+  form = new FormGroup({
+    chosenYear: new FormControl("")
+  });
   constructor(private dataService: DataService,
-    private seminarService: SeminarService){this.currentYear = new Date().getFullYear();}
+    private seminarService: SeminarService,
+    private fb: FormBuilder){
+      this.currentYear = new Date().getFullYear();
+      this.year = this.currentYear;
+    }
   cards: Card[] = [];
   ngOnInit(): void {
-    this.seminarService.getSeminarYear(this.currentYear).subscribe((res:any)=>{
+    this.form = this.fb.group({
+      chosenYear: [''+this.currentYear+'']
+    });
+    this.seminarService.getSeminarYear(""+this.currentYear).subscribe((res:any)=>{
       for(let i = 0; i < res.length; i++){
-        this.cards.push(new Card(res[i].title, res[i].place, res[i].date, res[i].content));
+        this.cards.push(new Card(res[i].title, res[i].place, res[i].date, res[i].content, res[i].orator));
       }
 
+    }, (err) => {
+      if(err.error?.message){
+        console.log(err.error?.message);
+      }
+      else{
+        console.log('une erreur est survenue.');
+      }
+    });
+  }
+  switchYear(event: Event): void {
+    const year = (event.target as HTMLSelectElement).value;
+    this.year = parseInt(year);
+    console.log(year);
+    this.cards =  [];
+    this.seminarService.getSeminarYear(year).subscribe((res:any)=>{
+      for(let i = 0; i < res.length; i++){
+        this.cards.push(new Card(res[i].title, res[i].place, res[i].date, res[i].content, res[i].orator));
+      }
+      console.log(this.cards);
     }, (err) => {
       if(err.error?.message){
         console.log(err.error?.message);

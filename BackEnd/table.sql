@@ -13,47 +13,6 @@ INSERT INTO utilisateur(nom, prenom, email, password, status) VALUES ("BOUZIDI",
 
 titre, date, place, content, orateur, langue
 
-
-INSERT INTO seminaires VALUES (
-    "",
-    "",
-    "",
-    "",
-    "",
-    ""
-);
-INSERT INTO seminaires VALUES (
-    "",
-    "",
-    "",
-    "",
-    "",
-    ""
-);
-INSERT INTO seminaires VALUES (
-    "",
-    "",
-    "",
-    "",
-    "",
-    ""
-);
-INSERT INTO seminaires VALUES (
-    "",
-    "",
-    "",
-    "",
-    "",
-    ""
-);
-INSERT INTO seminaires VALUES (
-    "",
-    "",
-    "",
-    "",
-    "",
-    ""
-);
 INSERT INTO seminaires VALUES (
     "",
     "",

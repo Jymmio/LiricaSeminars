@@ -20,6 +20,7 @@ export class CardComponent implements OnInit{
     this.data.push(this.card.place);
     this.data.push(this.card.date);
     this.data.push(this.card.content);
+    this.data.push(this.card.orator);
   }
 
   cardClick(): void{

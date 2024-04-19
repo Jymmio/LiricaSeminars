@@ -1,3 +1,4 @@
+<div id="success" [ngClass]="{'slide-down': isAddedAnimation, 'slide-up': !isAddedAnimation}" *ngIf="isAdded"><h2>Séminaire ajouté avec succès !</h2></div>
 <h1>Ajoutez un séminaire !</h1>
 <div class="new-seminar" *ngIf="this.globalService.isConnected">
     <form [formGroup]="form">
@@ -9,8 +10,8 @@
         </div>
         <div class="search-element">
           <h3 class="error" *ngIf="verifyOrator">Veuillez entrer un(e) orateur/oratrice *</h3>
-          <h3>Orateur</h3>
-          <input placeholder="Orateur..."  formControlName="orator"/>
+          <h3>Orateur/Oratrice</h3>
+          <input placeholder="Orateur/Oratrice..."  formControlName="orator"/>
         </div>
         <div class="search-element">
           <h3 class="error" *ngIf="verifyLanguage">Veuillez selectionner une langue *</h3>

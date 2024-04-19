@@ -1,5 +1,17 @@
 <div class="seminar-cards">
-  <h1>SÉMINAIRES DE CETTE ANNÉE</h1>
+  <div id="seminar-year">
+    <h1>SÉMINAIRES L'ANNÉE {{year}}</h1>
+    <form [formGroup] = "form">
+      <label for="choix">Choisir l'année :
+        <select id="choix" formControlName="chosenYear" (change)="switchYear($event)">
+          <option value="2024">2024</option>
+          <option value="2023">2023</option>
+          <option value="2022">2022</option>
+          <option value="2021">2021</option>
+        </select>
+      </label>
+    </form>
+  </div>
   <app-card-display ></app-card-display>
   <div class="cards">
     <app-card  *ngFor="let card of cards" [card] = "card"></app-card>

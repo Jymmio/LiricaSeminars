@@ -4,9 +4,10 @@
   </div>
   <div id="displayed">
     <h2>{{title}}</h2>
-    <h3>{{place}}</h3>
-    <h3>{{date}}</h3>
-    <p>{{content}}</p>
+    <h3><strong style="text-decoration: underline;">Orateur/Oratrice :</strong> {{orator}}</h3>
+    <h3><strong style="text-decoration: underline;">Lieu(x) :</strong> {{place}}</h3>
+    <h3><strong style="text-decoration: underline;">Date :</strong> {{date}}</h3>
+    <p><strong style="text-decoration: underline;">Résumé :</strong> <br/>{{content}}</p>
   </div>
 </div>
 <div id="overlay" *ngIf="isCardVisible"></div>
