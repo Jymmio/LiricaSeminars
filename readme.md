@@ -1,7 +1,7 @@
 # Seminaires LIRICA
 
-- Projet Web L3 Informatique, Semestre 6, Luminy
-- Auteur : Nadjim BOUZIDI
+- - - - - Projet Web L3 Informatique, Semestre 6, Luminy
+- - - - - Auteur : Nadjim BOUZIDI 
 
 * Outils utilisés : L'application est un site web, contenant un dossier Backend, et un dossier FrontEnd. 
 - * La partie BackEnd est gérée par un serveur nodejs, elle gère une base de données nommée "liricadb", pour permettre les interractions avec l'utilisateur.
