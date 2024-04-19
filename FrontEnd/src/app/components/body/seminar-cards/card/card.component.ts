@@ -11,15 +11,15 @@ import { Card } from '../../../../models/card.model';
 })
 export class CardComponent implements OnInit{
   data: String[] = [];
-  @Input() cardComponent!: Card;
+  @Input() card!: Card;
 
   constructor(public dataService:DataService) {
   }
   ngOnInit(): void {
-    this.data.push( this.cardComponent.title);
-    this.data.push(this.cardComponent.place);
-    this.data.push(this.cardComponent.date);
-    this.data.push(this.cardComponent.content);
+    this.data.push(this.card.title);
+    this.data.push(this.card.place);
+    this.data.push(this.card.date);
+    this.data.push(this.card.content);
   }
 
   cardClick(): void{

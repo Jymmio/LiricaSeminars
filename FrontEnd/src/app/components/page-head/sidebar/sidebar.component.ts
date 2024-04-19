@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { SidebarService } from '../../../services/sidebar.service';
 import { NgIf, CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { GlobalService } from '../../../services/global.service';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 
 @Component({
@@ -15,11 +17,18 @@ import { RouterLink } from '@angular/router';
 export class SidebarComponent implements OnInit {
   isSidebarVisible: boolean = false;
 
-  constructor(private sidebarService: SidebarService) { }
-
+  constructor(private sidebarService: SidebarService,
+    public globalService: GlobalService,
+    private ngx: NgxUiLoaderService
+  ) { }
   ngOnInit(): void {
     this.sidebarService.isSidebarOpen$.subscribe(isOpen => {
       this.isSidebarVisible = isOpen;
     });
+  }
+  disconnect(): void{
+    this.ngx.start();
+    this.globalService.isConnected = false;
+    this.ngx.stop();
   }
 }

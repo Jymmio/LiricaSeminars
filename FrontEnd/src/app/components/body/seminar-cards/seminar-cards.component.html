@@ -1,10 +1,7 @@
 <div class="seminar-cards">
-  <h1>SÉMINAIRES 2024</h1>
+  <h1>SÉMINAIRES DE CETTE ANNÉE</h1>
+  <app-card-display ></app-card-display>
   <div class="cards">
-    <app-card-display ></app-card-display>
-    <app-card [cardComponent]="card1"></app-card>
-    <app-card [cardComponent]="card2"></app-card>
-    <app-card [cardComponent]="card3"></app-card>
-    <app-card [cardComponent]="card4"></app-card>
+    <app-card  *ngFor="let card of cards" [card] = "card"></app-card>
   </div>
 </div>

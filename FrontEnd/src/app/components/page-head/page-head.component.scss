@@ -95,6 +95,9 @@ input{
 .animate-leave {
   animation: moveDownUp 0.7s ease-in-out;
 }
+i{
+  cursor: pointer;
+}
 @keyframes moveUpDown {
   0% {
     transform: translateY(-250px);

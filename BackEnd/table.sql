@@ -9,3 +9,240 @@ CREATE TABLE utilisateur(
 );
 
 INSERT INTO utilisateur(nom, prenom, email, password, status) VALUES ("BOUZIDI", "Nadjim", "nadjim.jim@hotmail.com", "12345678", "true");
+
+
+titre, date, place, content, orateur, langue
+
+
+INSERT INTO seminaires VALUES (
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+);
+INSERT INTO seminaires VALUES (
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+);
+INSERT INTO seminaires VALUES (
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+);
+INSERT INTO seminaires VALUES (
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+);
+INSERT INTO seminaires VALUES (
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+);
+INSERT INTO seminaires VALUES (
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+);
+INSERT INTO seminaires VALUES (
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+);
+INSERT INTO seminaires VALUES (
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+);
+INSERT INTO seminaires VALUES (
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+);
+INSERT INTO seminaires VALUES (
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+);
+INSERT INTO seminaires VALUES (
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+);
+INSERT INTO seminaires VALUES (
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+);
+INSERT INTO seminaires VALUES (
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+);
+INSERT INTO seminaires VALUES (
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+);
+INSERT INTO seminaires VALUES (
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+);
+INSERT INTO seminaires VALUES (
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+);
+INSERT INTO seminaires VALUES (
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+);
+INSERT INTO seminaires VALUES (
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+);
+INSERT INTO seminaires VALUES (
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+);
+INSERT INTO seminaires VALUES (
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+);
+INSERT INTO seminaires VALUES (
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+);
+INSERT INTO seminaires VALUES (
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+);
+INSERT INTO seminaires VALUES (
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+);
+INSERT INTO seminaires VALUES (
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+);
+INSERT INTO seminaires VALUES (
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+);
+INSERT INTO seminaires VALUES (
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+);
+INSERT INTO seminaires VALUES (
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+);
+INSERT INTO seminaires VALUES (
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+);
+INSERT INTO seminaires VALUES (
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+);

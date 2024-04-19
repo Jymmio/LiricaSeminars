@@ -1,7 +1,6 @@
 const express = require('express');
 const connection = require('../connection');
 const router = express.Router();
-const jsonWebToken = require('jsonwebtoken');
 require('dotenv').config();
 
 router.post('/signup', (req, res) => {
@@ -44,8 +43,7 @@ router.post('/login', (req, res) => {
             }
             else if (results[0].password === user.password) {
                 const reponse = { email: results[0].email };
-                const accessToken = jsonWebToken.sign(reponse, process.env.ACCESS_TOKEN, { expiresIn: '8h' });
-                res.status(200).json({ token: accessToken });
+                return res.status(200).json({ message: "Connected" });
             }
             else {
                 return res.status(400).json({ message: "une erreur est survenue." });
