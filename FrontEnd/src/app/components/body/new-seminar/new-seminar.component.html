@@ -3,17 +3,20 @@
     <form [formGroup]="form">
       <div id="up-part" class="search-part">
         <div class="search-element">
+          <h3 class="error" *ngIf="verifyTitle">Veuillez entrer un titre *</h3>
           <h3>Titre</h3>
           <input placeholder="Titre..." formControlName="title"/>
         </div>
         <div class="search-element">
+          <h3 class="error" *ngIf="verifyOrator">Veuillez entrer un(e) orateur/oratrice *</h3>
           <h3>Orateur</h3>
           <input placeholder="Orateur..."  formControlName="orator"/>
         </div>
         <div class="search-element">
-          <h3 style="text-align: center; padding-bottom: 8px;">Langue</h3>
+          <h3 class="error" *ngIf="verifyLanguage">Veuillez selectionner une langue *</h3>
+          <h3>Langue</h3>
           <label for="choix">Langue...
-            <select id="choix" placeholder="Auteur..."  formControlName="language">
+            <select id="choix" formControlName="language">
               <option>-</option>
               <option>Français</option>
               <option>English</option>
@@ -23,14 +26,17 @@
       </div>
       <div id="down-part" class="search-part">
         <div class="search-element">
+          <h3 class="error" *ngIf="verifyPlace">Veuillez entrer un emplacement *</h3>
           <h3>Emplacement</h3>
           <input placeholder="Place..."  formControlName="place">
         </div>
         <div class="search-element">
+          <h3 class="error" *ngIf="verifyDate">Veuillez selectionner une date *</h3>
           <h3>Date de création</h3>
           <input type="date"  formControlName="date">
         </div>
         <div class="search-element">
+          <h3 class="error" *ngIf="verifyContent">Veuillez entrer un résumé *</h3>
           <h3>Résumé</h3>
           <textarea rows="4" cols="50" formControlName="content" placeholder="Entrez le résumé du séminaire..."></textarea>
         </div>

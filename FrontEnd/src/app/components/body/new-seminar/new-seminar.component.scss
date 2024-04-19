@@ -36,48 +36,14 @@ button:hover{
 }
 textarea{
   resize: vertical;
-  font-family: Roboto;
+  all:unset;
+  flex-grow: 1;
+  padding: 10px 20px;
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
 }
-/*#up-part, #down-part{
-  margin: 20px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  gap: 150px;
-  h3{
-    margin: 10px;
-    font-weight: bold;
-  }
-  input, label{
-    height: 30px;
-    width: 200px;
-    all:unset;
-    flex-grow: 1;
-    padding: 10px 20px;
-    background-color: white;
-    border-radius: 10px;
-    overflow: hidden;
-  }
+.error{
+  color: red;
+  font-size: smaller;
 }
-button{
-  font-size: 1.2em;
-  font-weight: bold;
-  margin-top: 30px;
-  border: none;
-  padding: 5px;
-  width: 200px;
-  height: 40px;
-  cursor: pointer;
-  background-color: rgb(230, 230 ,230);
-}
-button:hover{
-  background-color: rgb(152, 158, 240);
-}
-option{
-  font-size: 1.2em;
-  width: auto;
-  height: auto;
-  padding: 2px;
-}
-*/

@@ -1,32 +1,36 @@
-<div id="signup-page">
+<div id="signup-page" *ngId="!globalService.isConnected">
   <div id="signup-content">
     <h2 id="signup-title">Inscription</h2>
 
     <form [formGroup]="form">
       <div class="input-signup-element">
         <div class="left">
+          <h3 class="error" *ngIf="verifyLastName">Veuillez entrer votre nom *</h3>
           <h3>Nom :</h3>
-          <input formControlName="lastName" placeholder="Last name..." />
+          <input formControlName="lastName" placeholder="Last name..."/>
         </div>
 
         <div class="right">
+          <h3 class="error" *ngIf="verifyFirstName">Veuillez entrer votre prénom *</h3>
           <h3>Prénom :</h3>
-          <input formControlName="firstName" placeholder="First name..." />
+          <input formControlName="firstName" placeholder="First name..."/>
         </div>
       </div>
 
       <div class="input-signup-element">
         <div class="left">
+          <h3 class="error"*ngIf="verifyEmail">{{emailErrorMesssage}}</h3>
           <h3>Adresse mail :</h3>
-          <input formControlName="email" placeholder="E-mail..." />
+          <input formControlName="email" placeholder="E-mail..."/>
         </div>
         <div class="right">
+          <h3 class="error" *ngIf="verifyPassword">Votre mot de passe doit contenir au moins 8 caractère *</h3>
           <h3>Mot de passe :</h3>
-          <input formControlName="password" placeholder="Password..." />
+          <input formControlName="password" placeholder="Password..."/>
         </div>
       </div>
+      <button type="submit" (click)="signupAction()">S'inscrire !</button>
     </form>
 
-    <button type="submit" (click)="signupAction()">S'inscrire !</button>
   </div>
 </div>

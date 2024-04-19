@@ -38,9 +38,6 @@ router.post('/login', (req, res) => {
             if (results.length <= 0 || results[0].password != user.password) {
                 return res.status(401).json({ message: "Utilisateur/Mot de passe incorrecte" });
             }
-            else if (results[0].status === 'false') {
-                return res.status(401).json({ message: "l'administrateur n'a pas confirmé" });
-            }
             else if (results[0].password === user.password) {
                 const reponse = { email: results[0].email };
                 return res.status(200).json({ message: "Connected" });
