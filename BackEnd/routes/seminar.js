@@ -17,8 +17,9 @@ router.get('/get/year-:annee', (req, res) => {
 });
 router.post('/add', (req, res) => {
     const seminar = req.body;
-    const query = "INSERT INTO seminaires(title,date,place,content) VALUES(?,?,?,?)";
-    connection.query(query, [seminar.title, seminar.date, seminar.place, seminar.content], (err, results) => {
+    console.log(req.body);
+    const query = "INSERT INTO seminaires(title,date,place,content,orateur,langue) VALUES(?,?,?,?,?,?)";
+    connection.query(query, [seminar.title, seminar.date, seminar.place, seminar.content, seminar.orator, seminar.language], (err, results) => {
         if (!err) {
             res.status(200).json({ message: "Seminaire ajouté sans erreurs." });
         }

@@ -16,7 +16,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   bgsColor:"blue",
   fgsColor:"blue",
   fgsType: SPINNER.threeStrings,
-  fgsSize:100,
+  fgsSize:150,
   pbDirection:PB_DIRECTION.leftToRight,
   pbThickness: 5
 }

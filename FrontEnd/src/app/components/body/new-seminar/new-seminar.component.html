@@ -1,0 +1,42 @@
+<h1>Ajoutez un séminaire !</h1>
+<div class="new-seminar" *ngIf="this.globalService.isConnected">
+    <form [formGroup]="form">
+      <div id="up-part" class="search-part">
+        <div class="search-element">
+          <h3>Titre</h3>
+          <input placeholder="Titre..." formControlName="title"/>
+        </div>
+        <div class="search-element">
+          <h3>Orateur</h3>
+          <input placeholder="Orateur..."  formControlName="orator"/>
+        </div>
+        <div class="search-element">
+          <h3 style="text-align: center; padding-bottom: 8px;">Langue</h3>
+          <label for="choix">Langue...
+            <select id="choix" placeholder="Auteur..."  formControlName="language">
+              <option>-</option>
+              <option>Français</option>
+              <option>English</option>
+            </select>
+          </label>
+        </div>
+      </div>
+      <div id="down-part" class="search-part">
+        <div class="search-element">
+          <h3>Emplacement</h3>
+          <input placeholder="Place..."  formControlName="place">
+        </div>
+        <div class="search-element">
+          <h3>Date de création</h3>
+          <input type="date"  formControlName="date">
+        </div>
+        <div class="search-element">
+          <h3>Résumé</h3>
+          <textarea rows="4" cols="50" formControlName="content" placeholder="Entrez le résumé du séminaire..."></textarea>
+        </div>
+      </div>
+      <div id="add-button">
+        <button type="submit" (click)="submitNewSeminar()">Ajouter !</button>
+      </div>
+    </form>
+</div>

@@ -1,0 +1,83 @@
+@import '../../page-head/advanced-search/advanced-search.component.scss';
+h1{
+  text-align: center;
+  margin: 70px 0;
+  font-weight: bold;
+  font-size: 2.5em;
+}
+#new-seminar{
+  margin-top: 50px;
+  padding-left: 6%;
+  padding-right: 6%;
+  padding-bottom: 30px;
+  border-top: 1px solid white;
+  background-color: #5B8291;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  height: 250px;
+}
+#up-part, #down-part{
+  justify-content: center;
+  gap: 80px;
+}
+#add-button{
+  display: flex;
+  justify-content: center;
+}
+button{
+  color: #FFFFFF;
+  background-color: rgb(51, 24, 186);
+  border-radius: 45px;
+}
+button:hover{
+  background-color: rgba(51, 24, 186, 0.721);
+}
+textarea{
+  resize: vertical;
+  font-family: Roboto;
+}
+/*#up-part, #down-part{
+  margin: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 150px;
+  h3{
+    margin: 10px;
+    font-weight: bold;
+  }
+  input, label{
+    height: 30px;
+    width: 200px;
+    all:unset;
+    flex-grow: 1;
+    padding: 10px 20px;
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+}
+button{
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-top: 30px;
+  border: none;
+  padding: 5px;
+  width: 200px;
+  height: 40px;
+  cursor: pointer;
+  background-color: rgb(230, 230 ,230);
+}
+button:hover{
+  background-color: rgb(152, 158, 240);
+}
+option{
+  font-size: 1.2em;
+  width: auto;
+  height: auto;
+  padding: 2px;
+}
+*/
