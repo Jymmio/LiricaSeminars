@@ -26,13 +26,11 @@ router.get('/get', (req, res) => {
       }
     }
     query += conditions.join(" AND ");
-    console.log(query);
   
     connection.query(query, (err, results) => {
       if (!err) {
         return res.status(200).json(results);
       } else {
-        console.log(err);
         return res.status(500).json({ err });
       }
     });
@@ -51,7 +49,6 @@ router.get('/get/title-:title', (req, res) => {
   });
 router.post('/add', (req, res) => {
     const seminar = req.body;
-    console.log(req.body);
     const query = "INSERT INTO seminaires(title,date,place,content,orateur,langue) VALUES(?,?,?,?,?,?)";
     connection.query(query, [seminar.title, seminar.date, seminar.place, seminar.content, seminar.orator, seminar.language], (err, results) => {
         if (!err) {

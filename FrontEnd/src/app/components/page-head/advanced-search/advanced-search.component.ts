@@ -46,7 +46,7 @@ export class AdvancedSearchComponent {
       title?: string;
       date?: string;
       place?: string;
-      orator?: string;
+      orateur?: string;
       langue?: string;
     }
     var data : Data = {
@@ -69,7 +69,7 @@ export class AdvancedSearchComponent {
     if (oratorControl) {
       const orator = oratorControl.value ?? "";
       if(orator!==""){
-        data.orator = orator;
+        data.orateur = orator;
       }
     }
     if (languageControl) {

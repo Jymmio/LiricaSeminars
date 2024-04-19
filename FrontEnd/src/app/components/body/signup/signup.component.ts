@@ -4,6 +4,7 @@ import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CommonModule, NgIf } from '@angular/common';
+import { GlobalService } from '../../../services/global.service';
 
 @Component({
   selector: 'app-signup',
@@ -21,6 +22,7 @@ export class SignupComponent {
 
   constructor(private userService: UserService,
     private  ngxUiLoaderService: NgxUiLoaderService,
+    public gs: GlobalService,
     private router: Router){}
   form: FormGroup = new FormGroup({
     lastName: new FormControl(''),
