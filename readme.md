@@ -27,3 +27,5 @@ Utilisation : "cd FrontEnd" -> "ng serve" ou "ng s" pour lancer le projet Angula
 * Tests : 
 
 - Pour tester les différentes fonctionnalités, un compte générique à été crée sur la bdd : {email: "jean.dupont@domaine.com", password: "12345678"}, vous pouvez également en créer un nouveau sur le bouton signup.
+
+* Le code source de la page web se trouve également sur mon compte etulab en publique, mais malheureusement je n'ai pas encore pu héberger le site directement sur github.
