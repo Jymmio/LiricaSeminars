@@ -21,6 +21,7 @@ export class NewSeminarComponent {
   verifyLanguage: boolean = false;
   verifyPlace: boolean = false;
   verifyDate: boolean = false;
+  verifyTime: boolean = false;
   verifyContent: boolean = false;
   constructor(public globalService: GlobalService,
     private ngx: NgxUiLoaderService,
@@ -33,20 +34,23 @@ export class NewSeminarComponent {
     orator: new FormControl(''),
     place: new FormControl(''),
     date: new FormControl(''),
+    hour: new FormControl(''),
     content: new FormControl('')
   })
   async submitNewSeminar() {
     const titleControl = this.form.get('title');
     const dateControl = this.form.get('date');
+    const hourControl = this.form.get('hour');
     const placeControl = this.form.get('place');
     const oratorControl = this.form.get('orator');
     const languageControl = this.form.get('language');
     const contentControl = this.form.get('content');
     this.isAdded = false;
     this.isAddedAnimation = false;
-    var data = {
+    var tempData = {
       title: "",
       date: "",
+      hour: "",
       place: "",
       content: "",
       orator: "",
@@ -55,34 +59,47 @@ export class NewSeminarComponent {
 
     if (titleControl) {
       const title = titleControl.value ?? "";
-      data.title = title;
+      tempData.title = title;
     }
     if (dateControl) {
       const date = dateControl.value ?? "";
-      data.date = date;
+      tempData.date = date;
+    }
+    if (hourControl){
+      const hour = hourControl.value ?? "";
+      tempData.hour = hour;
     }
     if (oratorControl) {
       const orator = oratorControl.value ?? "";
-      data.orator = orator;
+      tempData.orator = orator;
     }
     if (languageControl) {
       const languageText = languageControl.value ?? "";
       if (languageText !== "-") {
-        data.language = languageText;
+        tempData.language = languageText;
       }
       else {
-        data.language = "";
+        tempData.language = "";
       }
     }
     if (placeControl) {
       const place = placeControl.value ?? "";
-      data.place = place;
+      tempData.place = place;
     }
     if (contentControl) {
       const content = contentControl.value ?? "";
-      data.content = content;
+      tempData.content = content;
     }
-    if (data.title !== "" && data.place !== "" && data.date !== "" && data.orator !== "" && data.language !== "" && data.place !== "") {
+    if (tempData.title !== "" && tempData.place !== "" && tempData.date !== "" && tempData.hour !== "" && tempData.orator !== "" && tempData.language !== "" && tempData.place !== "") {
+      var completeDate = tempData.date + " " + tempData.hour;
+      var data = {
+        title: tempData.title,
+        date: completeDate,
+        place: tempData.place,
+        content: tempData.content,
+        orator: tempData.orator,
+        language: tempData.language
+      }
       this.seminarService.addSeminar(data).subscribe((res: any) => {
         this.ngx.start();
         if (res?.message === "Seminaire ajouté sans erreurs.") {
@@ -101,37 +118,43 @@ export class NewSeminarComponent {
       });
     }
     else {
-      if (data.title === "") {
+      if (tempData.title === "") {
         this.verifyTitle = true
       }
       else{
         this.verifyTitle = false;
       }
-      if(data.content === "") {
+      if(tempData.content === "") {
         this.verifyContent = true;
       }
       else{
         this.verifyContent = false;
       }
-      if (data.place === "") {
+      if (tempData.place === "") {
         this.verifyPlace = true
       }
       else{
         this.verifyPlace = false;
       }
-      if(data.orator === "") {
+      if(tempData.orator === "") {
         this.verifyOrator = true;
       }
       else{
         this.verifyOrator = false;
       }
-      if (data.date === "") {
+      if (tempData.date === "") {
         this.verifyDate = true
       }
       else{
         this.verifyDate = false;
       }
-      if(data.language === "") {
+      if(tempData.hour === "") {
+        this.verifyTime = true;
+      }
+      else{
+        this.verifyTime = false;
+      }
+      if(tempData.language === "") {
         this.verifyLanguage = true;
       }
       else{

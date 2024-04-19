@@ -37,6 +37,11 @@
           <input type="date"  formControlName="date">
         </div>
         <div class="search-element">
+          <h3 class="error" *ngIf="verifyTime">Veuillez selectionner une horaire *</h3>
+          <h3>Heure de création</h3>
+          <input type="time"  formControlName="hour">
+        </div>
+        <div class="search-element">
           <h3 class="error" *ngIf="verifyContent">Veuillez entrer un résumé *</h3>
           <h3>Résumé</h3>
           <textarea rows="4" cols="50" formControlName="content" placeholder="Entrez le résumé du séminaire..."></textarea>
