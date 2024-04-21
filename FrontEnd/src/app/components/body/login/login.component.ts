@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms';
 import { UserService } from '../../../services/user.service';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
@@ -14,6 +14,13 @@ import { CommonModule, NgIf } from '@angular/common';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
+  @HostListener('document:keydown.enter', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) {
+    this.loginAction();
+  }
+
+
+
   emailErrorMessage: string = "";
   connexionErrorMessage: string = "";
   verifyEmail: boolean = false;

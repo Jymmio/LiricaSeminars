@@ -49,3 +49,48 @@ button:hover{
   color: red;
   font-size: smaller;
 }
+#connexion-error{
+  color: red;
+}
+
+#waitConfirm{
+  position: absolute;
+  top: 0;
+  z-index: 99999;
+  left: 35%;
+  transform: translate(-70%, 0);
+  background-color: rgb(186, 145, 24);
+  h2{
+    margin: 15px;
+    color: #FFFFFF;
+    font-size: x-large;
+  }
+}
+.slide-up {
+  animation: slideUp 0.5s ease-in-out forwards;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}
+.slide-down {
+  animation: slideDown 0.5s ease-in-out forwards;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

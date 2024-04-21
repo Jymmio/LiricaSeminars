@@ -1,5 +1,7 @@
+<div id="waitConfirm" [ngClass]="{'slide-down': isAddedAnimation, 'slide-up': !isAddedAnimation}" *ngIf="isAdded"><h2>Compte crée, en attente de confirmation !</h2></div>
 <div id="signup-page" *ngIf="!gs.isConnected">
   <div id="signup-content">
+    <h2 id="connexion-error" *ngIf="verifyConnexion">{{connexionErrorMessage}}</h2>
     <h2 id="signup-title">Inscription</h2>
 
     <form [formGroup]="form">
@@ -26,7 +28,7 @@
         <div class="right">
           <h3 class="error" *ngIf="verifyPassword">Votre mot de passe doit contenir au moins 8 caractère *</h3>
           <h3>Mot de passe :</h3>
-          <input formControlName="password" placeholder="Password..."/>
+          <input type="password" formControlName="password" placeholder="Password..."/>
         </div>
       </div>
       <button type="submit" (click)="signupAction()">S'inscrire !</button>

@@ -7,6 +7,7 @@ import { DataService } from '../../../services/data.service';
 import { PageHeadComponent } from '../../page-head/page-head.component';
 import { SeminarService } from '../../../services/seminar.service';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 
 @Component({
@@ -25,7 +26,8 @@ export class SeminarCardsComponent implements OnInit{
   });
   constructor(private dataService: DataService,
     private seminarService: SeminarService,
-    private fb: FormBuilder){
+    private fb: FormBuilder,
+    private ngx: NgxUiLoaderService){
       this.currentYear = new Date().getFullYear();
       this.year = this.currentYear;
     }
@@ -51,13 +53,13 @@ export class SeminarCardsComponent implements OnInit{
   switchYear(event: Event): void {
     const year = (event.target as HTMLSelectElement).value;
     this.year = parseInt(year);
-    console.log(year);
     this.cards =  [];
     this.seminarService.getSeminarYear(year).subscribe((res:any)=>{
+      this.ngx.start();
       for(let i = 0; i < res.length; i++){
         this.cards.push(new Card(res[i].title, res[i].place, res[i].date, res[i].content, res[i].orator));
       }
-      console.log(this.cards);
+      this.ngx.stop();
     }, (err) => {
       if(err.error?.message){
         console.log(err.error?.message);
@@ -65,6 +67,7 @@ export class SeminarCardsComponent implements OnInit{
       else{
         console.log('une erreur est survenue.');
       }
+      this.ngx.stop();
     });
   }
 }

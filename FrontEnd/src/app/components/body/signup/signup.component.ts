@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { UserService } from '../../../services/user.service';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms';
@@ -14,11 +14,20 @@ import { GlobalService } from '../../../services/global.service';
   styleUrl: './signup.component.scss'
 })
 export class SignupComponent {
+  @HostListener('document:keydown.enter', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) {
+    this.signupAction();
+  }
+
+  isAdded : boolean = false;
+  isAddedAnimation : boolean = true;
   verifyFirstName : boolean = false;
   verifyLastName : boolean = false;
   verifyEmail : boolean = false;
   verifyPassword : boolean = false;
+  verifyConnexion: boolean = false;
   emailErrorMesssage: String = "";
+  connexionErrorMessage: string = "";
 
   constructor(private userService: UserService,
     private  ngxUiLoaderService: NgxUiLoaderService,
@@ -30,14 +39,14 @@ export class SignupComponent {
     email: new FormControl(''),
     password: new FormControl('')
   });
-  signupAction(): void{
+  async signupAction(){
     var emailControl = this.form.get('email');
     var passwordControl = this.form.get('password');
     var firstNameControl = this.form.get('firstName');
     var lastNameControl = this.form.get('lastName');
     var data = {
-      lastName: "",
-      firstName: "",
+      prenom: "",
+      nom: "",
       email: "",
       password: ""
     }
@@ -55,32 +64,38 @@ export class SignupComponent {
     }
     if (firstNameControl) {
       const first = firstNameControl.value;
-      data.firstName = first;
+      data.prenom = first;
     } else {
       console.log('Email control is not found');
     }
     if(lastNameControl){
       const last = lastNameControl.value;
-      data.lastName = last;
+      data.nom = last;
     } else {
       console.log("Password control is not found");
     }
 
-    if(data.firstName !== "" && data.lastName !== "" && data.password.length >= 8 && this.validateEmail(data.email)){
+    if(data.nom !== "" && data.prenom !== "" && data.password.length >= 8 && this.validateEmail(data.email)){
       this.ngxUiLoaderService.start();
       this.userService.signup(data).subscribe((res:any)=>{
-        this.ngxUiLoaderService.stop();
-        if(res?.message === "compte enregistré !"){
-          this.router.navigate(['/home']);
+        this.switchSuccess();
+        setTimeout(() =>{
+          this.ngxUiLoaderService.stop();
+          if(res?.message === "compte enregistré !"){
+            this.router.navigate(['/home']);
         }
+        }, 2500);
 
       }, (err) => {
         this.ngxUiLoaderService.stop();
         if(err.error?.message){
-          console.log(err.error?.message);
+          this.verifyConnexion = true;
+          this.connexionErrorMessage = err.error?.message;
+          console.log(this.connexionErrorMessage);
         }
         else{
-          console.log('une erreur est survenue.');
+          this.verifyConnexion = true;
+          this.connexionErrorMessage = 'une erreur est survenue.';
         }
       });
     }
@@ -97,13 +112,13 @@ export class SignupComponent {
       else{
         this.verifyEmail = false;
       }
-      if(data.firstName===""){
+      if(data.nom===""){
         this.verifyFirstName = true;
       }
       else{
         this.verifyFirstName = false;
       }
-      if(data.lastName===""){
+      if(data.prenom===""){
         this.verifyLastName = true;
       }
       else{
@@ -123,5 +138,18 @@ export class SignupComponent {
     const emailPattern: RegExp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
     return emailPattern.test(email);
+  }
+
+  sleep(ms: number) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+  async switchSuccess(){
+    this.isAdded = true;
+    this.isAddedAnimation = true;
+    await this.sleep(2000);
+    this.isAddedAnimation = false;
+    setTimeout(()=> {
+      this.isAdded = false;
+    }, 500);
   }
 }
