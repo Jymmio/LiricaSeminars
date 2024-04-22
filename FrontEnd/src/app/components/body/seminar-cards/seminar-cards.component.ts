@@ -38,7 +38,7 @@ export class SeminarCardsComponent implements OnInit{
     });
     this.seminarService.getSeminarYear(""+this.currentYear).subscribe((res:any)=>{
       for(let i = 0; i < res.length; i++){
-        this.cards.push(new Card(res[i].title, res[i].place, res[i].date, res[i].content, res[i].orator));
+        this.cards.push(new Card(res[i].title, res[i].place, res[i].newdate, res[i].content, res[i].orator));
       }
 
     }, (err) => {
@@ -57,7 +57,7 @@ export class SeminarCardsComponent implements OnInit{
     this.seminarService.getSeminarYear(year).subscribe((res:any)=>{
       this.ngx.start();
       for(let i = 0; i < res.length; i++){
-        this.cards.push(new Card(res[i].title, res[i].place, res[i].date, res[i].content, res[i].orator));
+        this.cards.push(new Card(res[i].title, res[i].place, res[i].newdate, res[i].content, res[i].orator));
       }
       this.ngx.stop();
     }, (err) => {

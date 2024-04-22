@@ -5,7 +5,7 @@ require('dotenv').config();
 
 router.get('/get/year-:annee', (req, res) => {
     const annee = req.params.annee;
-    var query = "SELECT title, DATE_FORMAT(date, '%d/%m/%Y %kh%i') AS date, place, content, orateur AS orator FROM seminaires WHERE YEAR(date) = " + annee + " ORDER BY MONTH(date) DESC, DAY(date) DESC, HOUR(date) DESC, MINUTE(date) DESC";
+    var query = "SELECT title, DATE_FORMAT(date, '%d/%m/%Y %kh%i') as newdate, place, content, orateur AS orator FROM seminaires WHERE YEAR(date) = " + annee + " ORDER BY date DESC";
     connection.query(query, (err, results) => {
         if (!err) {
             return res.status(200).json(results);
@@ -18,7 +18,7 @@ router.get('/get/year-:annee', (req, res) => {
 
 router.get('/get', (req, res) => {
     const data = req.query; 
-    let query = "SELECT title, DATE_FORMAT(date, '%d/%m/%Y %kh%i') AS date, place, content, orateur AS orator FROM seminaires WHERE ";
+    let query = "SELECT title, DATE_FORMAT(date, '%d/%m/%Y %kh%i') AS newdate, place, content, orateur AS orator FROM seminaires WHERE ";
     const conditions = [];
     for (const key in data) {
       if (data.hasOwnProperty(key)) {
@@ -26,6 +26,8 @@ router.get('/get', (req, res) => {
       }
     }
     query += conditions.join(" AND ");
+    query += " ORDER BY date DESC";
+    console.log(query);
   
     connection.query(query, (err, results) => {
       if (!err) {
@@ -38,7 +40,7 @@ router.get('/get', (req, res) => {
 
 router.get('/get/title-:title', (req, res) => {
     const title = req.params.title;
-    var query = "SELECT title, DATE_FORMAT(date, '%d/%m/%Y %kh%i') AS date, place, content FROM seminaires WHERE title LIKE ?";
+    var query = "SELECT title, DATE_FORMAT(date, '%d/%m/%Y %kh%i') AS newdate, place, content FROM seminaires WHERE title LIKE ? ORDER BY date DESC";
     connection.query(query, ['%'+title+'%'], (err, results) => {
       if (!err) {
         return res.status(200).json(results);

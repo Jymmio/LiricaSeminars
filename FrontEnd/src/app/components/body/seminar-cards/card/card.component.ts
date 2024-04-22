@@ -18,7 +18,7 @@ export class CardComponent implements OnInit{
   ngOnInit(): void {
     this.data.push(this.card.title);
     this.data.push(this.card.place);
-    this.data.push(this.card.date);
+    this.data.push(this.card.newdate);
     this.data.push(this.card.content);
     this.data.push(this.card.orator);
   }

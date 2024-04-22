@@ -44,7 +44,7 @@ export class AdvancedSearchComponent {
     const languageControl = this.form.get('language');
     interface Data {
       title?: string;
-      date?: string;
+      newdate?: string;
       place?: string;
       orateur?: string;
       langue?: string;
@@ -63,7 +63,7 @@ export class AdvancedSearchComponent {
     if (dateControl) {
       const date = dateControl.value ?? "";
       if(date!==""){
-        data.date = date;
+        data.newdate = date;
       }
     }
     if (oratorControl) {
