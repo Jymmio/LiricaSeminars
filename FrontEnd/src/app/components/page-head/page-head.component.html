@@ -1,15 +1,31 @@
-<div id="head-item">
-  <button id="slide" (click) = "slideClick()"><i class="fas fa-bars"></i></button>
-  <app-sidebar></app-sidebar>
-  <h1 routerLink="home">SÉMINAIRES LIRICA</h1>
-  <div id="search">
-    <form [formGroup]="form">
-      <div id="search-bar">
-          <input placeholder="Search title..."  formControlName="search"/>
-          <button id="search-button" (click)="submitSearch()"><i class="fas fa-search"></i></button>
-      </div>
-    </form>
-    <button id="advanced-search" (click) = "searchClick()">Recherche avancée</button>
+<div id="head">
+  <div id="head-item">
+    <button id="slide" (click) = "slideClick()"><i class="fas fa-bars"></i></button>
+    <app-sidebar></app-sidebar>
+    <h1 *ngIf="!globalService.isConnected">Séminaires LIRICA</h1>
+    <button id="settings" *ngIf="globalService.currentUser.role==='admin' && globalService.isConnected" routerLink="settings"><i class="fas fa-cog"></i></button>
+    <i *ngIf="globalService.isConnected" id="home-icon" class="fas fa-home" routerLink="home"></i>
+    <div id="search">
+      <form [formGroup]="form" *ngIf="globalService.isConnected">
+        <div id="search-bar">
+            <input placeholder="Search title..."  formControlName="search"/>
+            <button id="search-button" (click)="submitSearch()"><i class="fas fa-search"></i></button>
+        </div>
+      </form>
+      <button *ngIf="globalService.isConnected" id="advanced-search" (click) = "searchClick()">Recherche avancée</button>
+    </div>
+  </div>
+  <div id="role-title" *ngIf="globalService.isConnected">
+    <h3>Role : {{globalService.currentUser.role}}</h3>
+    <h3 *ngIf="globalService.currentUser.role===null">Pending</h3>
+    <div id="status-circle" [style.background-color]="globalService.statusColor"></div>
+  </div>
+  <div id="button-item">
+    <button id="tuto"><i class="fas fa-question-circle" routerLink="help"
+      (click)="globalService.isHelping=false;
+              globalService.isHelpSeminar=false;
+              globalService.isHelpUser=false;
+              globalService.isHelpWebsite=false"></i></button>
   </div>
 </div>
 <app-advanced-search id="advanced-search-section"></app-advanced-search>

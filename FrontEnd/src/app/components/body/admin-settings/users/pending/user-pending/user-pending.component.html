@@ -1,0 +1,32 @@
+<div [style.background-color]="statusColor" id="success" [ngClass]="{'slide-down': isAnimationAdded, 'slide-up': !isAnimationAdded}" *ngIf="isAdded"><h2>{{updateMessage}}</h2></div>
+<div *ngIf="isConfirm">
+  <div class="confirm">
+    <div id="close-btn" (click)="isConfirm = false;">
+      <i class="fas fa-times"></i>
+    </div>
+    <h1>Souhaitez-vous confirmer le changement suivant : {{this.user.changeValue}}</h1>
+    <button id="confirm-again" (click)="confirmAgain()">Confirmer</button>
+  </div>
+  <div id="overlay"></div>
+</div>
+<div class="user-info">
+  <div class="name-title">
+    <h2>{{user.firstName}} {{user.lastName}}</h2>
+  </div>
+  <div class="email-title">
+    <h2>{{user.email}}</h2>
+  </div>
+  <div class="action-title">
+    <button id="delete-button" (click)="delete()"><i class="fa fa-times" aria-hidden="true" style="font-size: 24px;"></i></button>
+    <form [formGroup]="form">
+      <select id="choix" formControlName="role">
+        <option value="user">User</option>
+        <option value="maintainer">Maintainer</option>
+        <option value="admin">Admin</option>
+      </select>
+    </form>
+    <button (click)="update()">
+      Confirmer
+    </button>
+  </div>
+</div>

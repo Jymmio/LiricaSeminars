@@ -1,0 +1,20 @@
+<div class="help" *ngIf="!gs.isHelping">
+  <h1 *ngIf="gs.currentUser.role==='admin'">ADMIN HELP</h1>
+  <h1 *ngIf="gs.currentUser.role==='maintainer'">MAINTAINER HELP</h1>
+  <h1 *ngIf="gs.currentUser.role==='user' || gs.currentUser.role===''">USER HELP</h1>
+  <div id="help-items">
+    <div *ngIf="gs.currentUser.role==='admin'" class="help-element">
+
+      <button (click)="openHelpWebsite()" routerLink="manage-website">MANAGE THE WEBSITE</button>
+      </div>
+      <div *ngIf="gs.currentUser.role==='admin' || gs.currentUser.role==='maintainer'" class="help-element">
+        <button  (click)="openHelpSeminar()" routerLink="create-seminar">CREATE NEW SEMINARS</button>
+      </div>
+      <div class="help-element">
+        <button  (click)="openHelpUser()" routerLink="user-help">GET STARTED</button>
+      </div>
+  </div>
+</div>
+<app-help-user *ngIf="gs.isHelpUser"></app-help-user>
+<app-manage-seminar *ngIf="gs.isHelpSeminar"></app-manage-seminar>
+<app-manage-website *ngIf="gs.isHelpWebsite"></app-manage-website>

@@ -2,7 +2,7 @@
   <ul class="all-list">
     <li class="list-element" routerLink="login" *ngIf="!globalService.isConnected"><a class="a-element">Login</a></li>
     <li class="list-element" routerLink="signup" *ngIf="!globalService.isConnected"><a class="a-element">Sign Up</a></li>
-    <li class="list-element" routerLink="add-seminar" *ngIf="globalService.isConnected"><a class="a-element">New Seminar</a></li>
-    <li class="list-element" routerLink="home" *ngIf="globalService.isConnected" (click)="disconnect()"><a class="a-element">Disconnect</a></li>
+    <li class="list-element" routerLink="add-seminar" *ngIf="globalService.isConnected && globalService.currentUser.role!=='user'"><a class="a-element">New Seminar</a></li>
+    <li class="list-element" routerLink="login" *ngIf="globalService.isConnected" (click)="disconnect()"><a class="a-element">Disconnect</a></li>
   </ul>
 </div>

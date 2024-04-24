@@ -4,6 +4,7 @@
   margin: 20px;
   cursor: pointer;
   height: 83%;
+  position: relative;
 }
 #card-body{
   align-items: center;
@@ -44,4 +45,23 @@ p{
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+}
+.cover{
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.7); /* Opacité pour créer un effet de superposition */
+  z-index: 1;
+}
+.cover i{
+  color: white;
+  font-size: 80px;
+}
+.card:hover .cover{
+  display: flex;
+  justify-content: center; /* Centre horizontalement */
+  align-items: center;
 }

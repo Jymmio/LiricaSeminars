@@ -1,0 +1,91 @@
+<div [style.background-color]="messageStatusColor" id="success" [ngClass]="{'slide-down': isAnimationAdded, 'slide-up': !isAnimationAdded}" *ngIf="isAdded"><h2>{{updateMessage}}</h2></div>
+<!-- This is for updating the selected user's informations -->
+<div *ngIf="isUpdated">
+  <div class="confirm">
+    <div id="close-btn" (click)="isUpdated = false;">
+      <i class="fas fa-times"></i>
+    </div>
+    <h1>Modifier</h1>
+    <div id="update-formula">
+      <form [formGroup]="form">
+        <div id="formula-up">
+          <div class="nom">
+            <label for="nom">Nom :</label>
+            <input type="text" id="nom" formControlName="lastName">
+          </div>
+          <div class="prenom">
+            <label for="prenom">Prénom :</label>
+            <input type="text" id="prenom" formControlName="firstName">
+          </div>
+          <div class="email">
+            <label for="email">Email :</label>
+            <input type="text" id="email" formControlName="email">
+          </div>
+        </div>
+        <div id="formula-down">
+          <div class="status">
+            <label for="status">Status :</label>
+            <select type="text" id="status" formControlName="status">
+              <option>Active</option>
+              <option>Pending</option>
+            </select>
+          </div>
+          <div class="role">
+            <label for="role">Role :</label>
+            <select type="text" id="role" formControlName="role">
+              <option>admin</option>
+              <option>user</option>
+              <option>maintainer</option>
+            </select>
+          </div>
+          <button id="confirm-again" (click)="update()">Confirmer</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div id="overlay"></div>
+</div>
+
+<!-- This is to delete the selected user -->
+<div *ngIf="isDeleted">
+  <div class="confirm">
+    <div id="close-btn" (click)="isDeleted = false;">
+      <i class="fas fa-times"></i>
+    </div>
+    <h1>Êtes-vous sûr de vouloir supprimer l'utilisateur : {{this.user.firstName}} {{this.user.lastName}} ?</h1>
+    <button id="confirm-again" (click)="delete()">Confirmer</button>
+  </div>
+  <div id="overlay"></div>
+</div>
+
+<!-- These are the displayed items -->
+<div class="user-info">
+  <div class="name-title">
+    <h2>{{user.firstName}} {{user.lastName}}</h2>
+  </div>
+  <div class="email-title">
+    <h2>{{user.email}}</h2>
+  </div>
+  <div class="status-title">
+    <h2 [style.color]="userStatusColor">{{status}}</h2>
+  </div>
+  <div class="role-title">
+    <h2>{{user.role}}</h2>
+  </div>
+  <div class="action-title">
+    <i id="update-icon"
+       class="fa fa-pencil-square-o"
+       aria-hidden="true"
+       style="font-size: 24px;"
+       [style.cursor]="user.role === 'admin' ? 'not-allowed' : 'pointer'"
+       (click)="user.role !== 'admin' && (isUpdated = true)">
+    </i>
+    <i id="delete-icon"
+       class="fa fa-times"
+       aria-hidden="true"
+       style="font-size: 24px;"
+       [style.cursor]="user.role === 'admin' ? 'not-allowed' : 'pointer'"
+       (click)="user.role !== 'admin' && (isDeleted = true)">
+    </i>
+  </div>
+</div>

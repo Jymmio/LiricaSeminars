@@ -1,0 +1,20 @@
+<div [style.background-color]="statusColor" id="success" [ngClass]="{'slide-down': isAnimationAdded, 'slide-up': !isAnimationAdded}" *ngIf="isAdded"><h2>{{updateMessage}}</h2></div>
+<div class="pending-members">
+  <h1>Utilisateurs en attente de confirmation</h1>
+  <div id="pending-titles">
+    <div  class="name-title">
+      <h2>Nom Complet</h2>
+    </div>
+    <div class="email-title">
+      <h2>Email</h2>
+    </div>
+    <div class="action-title">
+      <h2>Role</h2>
+    </div>
+  </div>
+  <app-user-pending id="app-user-info"
+                *ngFor="let user of users; let i = index"
+                [user] = "user"
+                [remove]="removeUser.bind(this, i)">
+  </app-user-pending>
+</div>

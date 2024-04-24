@@ -1,0 +1,6 @@
+<div class="manage-seminars" *ngIf="gs.isConnected && gs.currentUser.role==='admin'">
+  <h1>Manage seminars</h1>
+  <div class="cards">
+    <app-card-update  *ngFor="let card of cards; let i = index" [card] = "card" [remove]="removeCard.bind(this, i)"></app-card-update>
+  </div>
+</div>

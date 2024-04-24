@@ -1,11 +1,13 @@
 import { Component, Input, OnInit} from '@angular/core';
 import { DataService } from '../../../../services/data.service';
 import { Card } from '../../../../models/card.model';
+import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-card',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './card.component.html',
   styleUrl: './card.component.scss'
 })
@@ -13,7 +15,9 @@ export class CardComponent implements OnInit{
   data: String[] = [];
   @Input() card!: Card;
 
-  constructor(public dataService:DataService) {
+  constructor(private dataService:DataService,
+    public router: Router
+  ) {
   }
   ngOnInit(): void {
     this.data.push(this.card.title);

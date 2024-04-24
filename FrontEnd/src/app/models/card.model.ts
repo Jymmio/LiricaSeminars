@@ -1,9 +1,11 @@
 export class Card {
   constructor (
-    public title:String,
-    public place:String,
-    public newdate:String,
-    public content:String,
-    public orator: String
+    public id:string,
+    public title:string,
+    public place:string,
+    public newdate:string,
+    public language:string,
+    public content:string,
+    public orator: string
   ){}
 }

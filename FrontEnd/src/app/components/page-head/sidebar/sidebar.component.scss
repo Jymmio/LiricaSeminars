@@ -1,6 +1,6 @@
 .sidebar {
   margin: 0;
-  background-color: #4A8DB7;
+  background-color: rgba(151,64,99,0.8);
   width: auto;
   height: 100%;
 }
@@ -23,9 +23,7 @@
   border-bottom: 1px solid white;
   cursor: pointer;
 }
-.sidebar li:first-child{
-  border-right: none;
-}
+
 .sidebar a{
   text-decoration: none;
   width: 100%;
@@ -36,5 +34,5 @@
   transition: background-color 0.5s ease;
 }
 .sidebar li:hover{
-  background-color: #5B8291;
+  background-color: rgb(255,150,119);
 }

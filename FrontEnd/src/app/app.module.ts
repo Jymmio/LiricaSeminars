@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { PageHeadComponent } from './components/page-head/page-head.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
+import { GlobalService } from './services/global.service';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   text: "Chargement...",
@@ -32,7 +33,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     PageHeadComponent,
     NgxUiLoaderModule.forRoot(ngxUiLoaderConfig)
   ],
-  providers: [],
+  providers: [GlobalService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

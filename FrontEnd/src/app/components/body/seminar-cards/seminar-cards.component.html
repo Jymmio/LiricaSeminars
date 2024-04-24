@@ -1,4 +1,4 @@
-<div class="seminar-cards">
+<div class="seminar-cards" *ngIf="gs.isConnected">
   <div id="seminar-year">
     <h1>SÉMINAIRES L'ANNÉE {{year}}</h1>
     <form [formGroup] = "form">

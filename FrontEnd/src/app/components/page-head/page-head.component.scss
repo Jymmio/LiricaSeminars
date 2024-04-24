@@ -1,24 +1,40 @@
-#head-item{
-  position: relative;
+h1{
+  color: white;;
+  font-size: 40px;
+  margin-top: 15px;
+  margin-left: 50px;
+}
+#head{
+  background-color: #41436A;
   top: 0;
-  background-color: #4A8DB7;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 2%;
   width: 100%;
+  z-index: 2;
+}
+#head-item{
+  width: 98%;
   height: 80px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   gap: 2%;
-  z-index: 1;
+  margin-left: 20px;
 }
-h1{
-  color: #EAEBED;
-  font-size: 42px;
-  margin-top: 20px;
-  cursor: pointer;
+#button-item{
+  position: relative;
+  width: 2%;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-h1:hover{
-  color: #666f81;
+#home-icon:hover, #slide:hover{
+  color: rgb(152, 158, 240);
 }
 #search{
   display: flex;
@@ -71,7 +87,7 @@ input{
 #advanced-search:hover{
   box-shadow: 4px 4px 10px -3px black;
 }
-#slide{
+#slide, #settings, #tuto, #home-icon{
   color: white;
   font-size: 42px;
   background-color: rgba(0, 0, 0, 0.0);
@@ -80,27 +96,39 @@ input{
   display: flex;
   align-items: center;
   border: none;
-  margin-left: auto;
+}
+#settings{
+  padding: 0;
+  margin-right: 20px;
+  transition: transform 0.2s ease-in-out;
+}
+#settings:hover{
+  transform: rotate(85deg);
+  color: rgb(152, 158, 240);
+}
+#tuto{
+  padding: 0;
+  margin-right: 30px;
 }
 
 #advanced-search-section{
   top: 80px;
   position: absolute;
   width: 100%;
-  z-index: 0;
+  z-index: 1;
 }
 .animate-enter {
   animation: moveUpDown 0.7s ease-in-out;
 }
 .animate-leave {
-  animation: moveDownUp 0.7s ease-in-out;
+  animation: moveDownUp 0.4s ease-in-out;
 }
 i{
   cursor: pointer;
 }
 @keyframes moveUpDown {
   0% {
-    transform: translateY(-250px);
+    transform: translateY(-300px);
   }
   100% {
     transform: translateY(0px);
@@ -111,6 +139,34 @@ i{
     transform: translateY(0px);
   }
   100% {
-    transform: translateY(-250px);
+    transform: translateY(-300px);
   }
+}
+#role-title{
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 250px;
+}
+h3{
+  margin: 0;
+  padding: 0;
+  color: white;
+}
+#status-circle{
+  padding: 0;
+  margin-left: 10px;
+  width: 10px;
+  height: 10px;
+  border-radius: 90px;
+}
+.red{
+  background-color: red;
+}
+.orange{
+  background-color: orange;
+}
+.green{
+  background-color: green;
 }

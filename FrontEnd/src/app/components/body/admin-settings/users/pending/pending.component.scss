@@ -1,0 +1,35 @@
+.pending-members{
+  margin: 0;
+  width: 100%;
+  height: auto;
+}
+h1{
+  text-align: center;
+  font-size: 35px;
+  margin: 40px 0;
+}
+#pending-titles{
+  display: flex;
+  flex-direction: row;
+}
+.name-title h2, .email-title h2, .action-title h2{
+  width: fit-content;
+  font-weight: bold;
+  border-bottom: 1px solid black;
+  padding-bottom: 3px;
+  padding-right: 5px;
+}
+.name-title{
+  width: 30%;
+  padding: 0.33%;
+}
+.email-title{
+  width: 50%;
+  margin-right: 20px;
+  padding: 0.33%;
+}
+.action-title{
+  width: 20%;
+  padding: 0.33%;
+}
+

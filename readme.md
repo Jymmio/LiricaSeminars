@@ -30,3 +30,27 @@ Utilisation : "cd FrontEnd" -> "ng serve" ou "ng s" pour lancer le projet Angula
 
 - * Le code source de la page web se trouve également sur mon compte etulab en publique, mais malheureusement je n'ai pas encore pu héberger le site directement sur github.
 - * Lien etulab : https://etulab.univ-amu.fr/b19025326/seminaires-lirica
+
+
+*Mise à jour :
+- vu que le rendu a été repoussé au 24 (aujourd'hui), j'ai ajouté quelques fonctionnalité :
+
+** role : maintenant l'utilisateur peu avoir 3 roles : admin, maintainer, ou user. chacun a des autorisations précises :
+    user : peut uniquement consulter les séminaires existants.
+    mainainer: les même autorisations que user, mais peut également ajouter des séminaires.
+    admin : memes autorisations que maintainer, et peut aussi modifier les infos des utilisateurs existant, et modifier/supprimer des   séminaires.
+** admin : un admin a accès à l'icone de la roue, qui ouvre les paramètres : là il pourra accepter/supprimer les nouveaux utilisateurs et leur acorder un role. il peut acceder à la liste des utilisateurs et modifier leurs infos (appart les autres admins), et il peut acceder à la page permettant de créer un séminaire (/add-seminar), et celle permettant de les modifier (/manage-seminars).
+
+la page /manage-seminars est similaire a celle affichant les séminaires. sauf qu'au lieu d'afficher les détails d'un séminaire en cliquant dessus, le serveur récupère les infos de ce dernier, et l'admin peut les voir et les modifier, ou également supprimer ce séminaire de la bdd.
+
+L'utilisateur est maintenant obligé de se connecter (en tant que user ou autre, les utilisateurs dont le role n'a pas été attribué ont leur compte non confirmé) pour pouvoir visualiser les séminaires.
+
+le principe est le même pour la liste des utilisateur lors des modifications/suppressions de ces derniers.
+
+utilisateurs déjà inscrits dans la bdd pour faciliter les tests :
+--admin: {email:"a@a.aa", password:"aaaaaaaa"}
+--maintainer: {email:"m@m.mm, password:"mmmmmmmm"}
+--user: {email: "u@u.uu", password: "uuuuuuuu"}
+
+
+ps: la page "help" n'a pas été terminée par manque de temps après l'ajout des nouvelles fonctionnalités.

@@ -1,0 +1,51 @@
+<div [style.background-color]="messageStatusColor" id="success" [ngClass]="{'slide-down': isAnimationAdded, 'slide-up': !isAnimationAdded}" *ngIf="isAdded"><h2>{{updateMessage}}</h2></div>
+<!-- This is for updating the selected user's informations -->
+<div *ngIf="isUpdated">
+  <div class="confirm">
+    <div id="close-btn" (click)="isUpdated = false;">
+      <i class="fas fa-times"></i>
+    </div>
+    <h1>Modifier</h1>
+    <div id="update-formula">
+      <form id="formula" [formGroup]="form">
+        <div id="up-part" class="search-part">
+          <div class="search-element">
+            <h3>Titre</h3>
+            <input placeholder="Titre..." formControlName="title" />
+          </div>
+          <div class="search-element">
+            <h3>Orateur</h3>
+            <input placeholder="Orateur..." formControlName="orateur" />
+          </div>
+          <div class="search-element">
+            <h3 style="text-align: center; padding-bottom: 8px;">Langue</h3>
+            <label for="choix">Langue...
+              <select class='choix' formControlName="langue">
+                <option>-</option>
+                <option>Français</option>
+                <option>English</option>
+              </select>
+            </label>
+          </div>
+        </div>
+        <div id="down-part" class="search-part">
+          <div class="search-element">
+            <h3>Emplacement</h3>
+            <input class='choix' formControlName="place">
+          </div>
+          <div class="search-element">
+            <h3>Résumé</h3>
+            <textarea rows="4" cols="50" formControlName="content" placeholder="Entrez le résumé du séminaire..."></textarea>
+          </div>
+        </div>
+        <div id="buttons">
+          <button id="confirm-again" (click)="update()">Confirmer</button>
+          <button id="delete" (click)="delete()">Supprimer</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div id="overlay"></div>
+</div>
+
+<app-card [card] = "card" (click)="isUpdated = true"></app-card>

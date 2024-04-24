@@ -16,9 +16,11 @@ import { GlobalService } from '../../../services/global.service';
 export class SignupComponent {
   @HostListener('document:keydown.enter', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
+    if (document.activeElement?.tagName === 'INPUT') {
+      return;
+    }
     this.signupAction();
   }
-
   isAdded : boolean = false;
   isAddedAnimation : boolean = true;
   verifyFirstName : boolean = false;
@@ -39,7 +41,7 @@ export class SignupComponent {
     email: new FormControl(''),
     password: new FormControl('')
   });
-  async signupAction(){
+  signupAction(){
     var emailControl = this.form.get('email');
     var passwordControl = this.form.get('password');
     var firstNameControl = this.form.get('firstName');

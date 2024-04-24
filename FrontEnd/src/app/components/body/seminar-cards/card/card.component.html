@@ -1,4 +1,7 @@
 <div class="card" (click) = "cardClick()">
+  <div *ngIf="router.isActive('manage-seminars', true)" class="cover">
+    <i class="fa fa-pencil" aria-hidden="true"></i>
+  </div>
   <div id="card-head">
     <h2 id="title">{{card.title}}</h2>
   </div>

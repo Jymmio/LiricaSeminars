@@ -8,6 +8,7 @@ import { PageHeadComponent } from '../../page-head/page-head.component';
 import { SeminarService } from '../../../services/seminar.service';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { GlobalService } from '../../../services/global.service';
 
 
 @Component({
@@ -27,7 +28,8 @@ export class SeminarCardsComponent implements OnInit{
   constructor(private dataService: DataService,
     private seminarService: SeminarService,
     private fb: FormBuilder,
-    private ngx: NgxUiLoaderService){
+    private ngx: NgxUiLoaderService,
+    public gs: GlobalService){
       this.currentYear = new Date().getFullYear();
       this.year = this.currentYear;
     }
@@ -38,7 +40,7 @@ export class SeminarCardsComponent implements OnInit{
     });
     this.seminarService.getSeminarYear(""+this.currentYear).subscribe((res:any)=>{
       for(let i = 0; i < res.length; i++){
-        this.cards.push(new Card(res[i].title, res[i].place, res[i].newdate, res[i].content, res[i].orator));
+        this.cards.push(new Card(res[i].id, res[i].title, res[i].place, res[i].newdate, res[i].langue, res[i].content, res[i].orator));
       }
 
     }, (err) => {
@@ -57,7 +59,7 @@ export class SeminarCardsComponent implements OnInit{
     this.seminarService.getSeminarYear(year).subscribe((res:any)=>{
       this.ngx.start();
       for(let i = 0; i < res.length; i++){
-        this.cards.push(new Card(res[i].title, res[i].place, res[i].newdate, res[i].content, res[i].orator));
+        this.cards.push(new Card(res[i].id, res[i].title, res[i].place, res[i].newdate, res[i].langue, res[i].content, res[i].orator));
       }
       this.ngx.stop();
     }, (err) => {

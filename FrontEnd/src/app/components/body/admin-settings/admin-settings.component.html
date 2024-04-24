@@ -1,0 +1,15 @@
+<div class="admin-settings" *ngIf="gs.isConnected && gs.currentUser.role==='admin'">
+  <div class="left">
+    <ul>
+      <li (click)="switchPending()" routerLink="pending-members" *ngIf="gs.isConnected && gs.currentUser.role==='admin'"><button>Pending members ({{gs.pendingMembersAmount}})</button></li>
+      <li (click)="switchManageMembers()" routerLink="manage-members" *ngIf="gs.isConnected && gs.currentUser.role==='admin'"><button>Manage members</button></li>
+      <li routerLink="/add-seminar"><button>Create seminar <i class="fa fa-external-link"
+            style="font-size: 24px;"></i></button></li>
+      <li routerLink="/manage-seminars"><button>Manage seminars <i class="fa fa-external-link"
+            style="font-size: 24px;"></i></button></li>
+    </ul>
+  </div>
+  <div class="right">
+    <router-outlet></router-outlet>
+  </div>
+</div>

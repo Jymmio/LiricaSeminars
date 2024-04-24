@@ -5,6 +5,8 @@ import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { Router } from '@angular/router';
 import { GlobalService } from '../../../services/global.service';
 import { CommonModule, NgIf } from '@angular/common';
+import { User } from '../../../models/user.model';
+import { SidebarService } from '../../../services/sidebar.service';
 
 @Component({
   selector: 'app-login',
@@ -14,13 +16,15 @@ import { CommonModule, NgIf } from '@angular/common';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
+  isConnectedAnimation: boolean = false;
+  isAdded: boolean = false;
   @HostListener('document:keydown.enter', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
     this.loginAction();
   }
 
 
-
+  connexionMessage: string = "";
   emailErrorMessage: string = "";
   connexionErrorMessage: string = "";
   verifyEmail: boolean = false;
@@ -29,7 +33,8 @@ export class LoginComponent {
   constructor(private userService: UserService,
     private ngxUiLoaderService: NgxUiLoaderService,
     private router: Router,
-    public globalService: GlobalService) { }
+    public globalService: GlobalService,
+    private sidebarService: SidebarService) { }
   form: FormGroup = new FormGroup({
     email: new FormControl(''),
     password: new FormControl('')
@@ -58,18 +63,33 @@ export class LoginComponent {
     if (this.validateEmail(data.email) && data.password.length >= 8) {
       this.ngxUiLoaderService.start();
       this.userService.login(data).subscribe((res: any) => {
-        this.ngxUiLoaderService.stop();
         if (res?.message === "Connected") {
+          this.connexionMessage = "Connected successfully";
+          this.globalService.statusColor = "green";
+          this.switchSuccess();
+          this.globalService.setCurrentUserRole(res[0]?.role);
           this.globalService.isConnected = true;
-          this.router.navigate(['/home']);
+          this.globalService.setCurrentUser(new User(res.id, res.prenom, res.nom, data.email, res.role, res.status));
+          setTimeout(() => {
+            this.router.navigate(['/home']);
+            this.ngxUiLoaderService.stop();
+            this.sidebarService.toggleSidebar();
+          },1500);
         }
 
       }, (err) => {
         this.ngxUiLoaderService.stop();
         if (err.error?.message) {
-          this.verifyConnexion = true;
-          this.connexionErrorMessage = err.error?.message;
-          console.log(this.connexionErrorMessage);
+          console.log(err.error?.message);
+          if(err.error?.message === "En attente de confirmation"){
+            this.globalService.statusColor = "orange";
+            this.connexionMessage = "Waiting for admin confirmation";
+            this.switchSuccess();
+          }
+          else{
+            this.verifyConnexion = true;
+            this.connexionErrorMessage = err.error?.message;
+          }
         }
         else {
           this.verifyConnexion = true;
@@ -102,5 +122,17 @@ export class LoginComponent {
     const emailPattern: RegExp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
     return emailPattern.test(email);
+  }
+  sleep(ms: number) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+  async switchSuccess(){
+    this.isAdded = true;
+    this.isConnectedAnimation = true;
+    await this.sleep(1000);
+    this.isConnectedAnimation = false;
+    setTimeout(() => {
+      this.isAdded = false;
+    }, 500);
   }
 }

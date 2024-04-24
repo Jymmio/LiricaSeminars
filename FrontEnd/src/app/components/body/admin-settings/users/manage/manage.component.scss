@@ -1,0 +1,40 @@
+.manage-members{
+  margin: 0;
+  width: 100%;
+  height: auto;
+}
+h1{
+  text-align: center;
+  font-size: 35px;
+  margin: 40px 0;
+}
+#manage-titles{
+  display: flex;
+  flex-direction: row;
+}
+.name-title h2, .email-title h2, .status-title h2, .role-title h2, .action-title h2{
+  width: fit-content;
+  font-weight: bold;
+  border-bottom: 1px solid black;
+  padding-bottom: 3px;
+  padding-right: 5px;
+}
+.name-title{
+  width: 25%;
+}
+.email-title{
+  width: 25%;
+}
+.status-title{
+  width: 10%;
+}
+.role-title{
+  width: 30%;
+  display: flex;
+  justify-content: center;
+}
+.action-title{
+  width: 10%;
+  display: flex;
+  justify-content: center;
+}

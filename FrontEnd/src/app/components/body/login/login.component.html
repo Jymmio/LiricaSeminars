@@ -1,3 +1,5 @@
+<div [style.background-color]="globalService.statusColor" id="success" [ngClass]="{'slide-down': isConnectedAnimation, 'slide-up': !isConnectedAnimation}" *ngIf="isAdded"><h2>{{connexionMessage}}</h2></div>
+
 <div id="login-page" *ngIf="!globalService.isConnected">
   <div id="login-content">
     <h2 id="connexion-error" *ngIf="verifyConnexion">{{connexionErrorMessage}}</h2>
